@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una pregunta especial ❤️</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffc0cb, #ffe4ec);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px 15px;
+            color: #a31545;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 25px;
+            max-width: 450px;
+            margin: auto;
+            box-shadow: 0 5px 25px #d88;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 100px;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #si {
+            background: #e91e63;
+            color: white;
+        }
+
+        #no {
+            background: #777;
+            color: white;
+            position: relative;
+        }
+
+        #respuesta {
+            display: none;
+            margin-top: 25px;
+            font-size: 23px;
+            color: #e91e63;
+            line-height: 1.5;
+        }
+
+        .corazon {
+            font-size: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tarjeta">
+        <div class="corazon">❤️</div>
+
+        <h1>¡Tengo una pregunta para ti!</h1>
+
+        <p>
+            Desde que llegaste a mi vida,
+            hay algo que quiero preguntarte...
+        </p>
+
+        <h2>¿Quieres ser mi novia? 💕</h2>
+
+        <div class="botones" id="zona">
+            <button id="si" onclick="aceptar()">
+                ¡Sí! 💖
+            </button>
+
+            <button id="no">
+                No 💔
+            </button>
+        </div>
+
+        <div id="respuesta">
+            ¡SABÍA QUE DIRÍAS QUE SÍ! 🥹❤️
+            <p>
+                Me acabas de hacer muy feliz.
+                💖😘
+            </p>
+            <div class="corazon">💘💕💞</div>
+        </div>
+    </div>
+
+    <script>
+        const botonNo = document.getElementById("no");
+        const zona = document.getElementById("zona");
+
+        function escapar() {
+            const ancho = zona.clientWidth;
+            const alto = zona.clientHeight;
+
+            botonNo.style.position = "absolute";
+
+            const maxX = Math.max(0, ancho - botonNo.offsetWidth);
+            const maxY = Math.max(0, alto - botonNo.offsetHeight);
+
+            botonNo.style.left = Math.random() * maxX + "px";
+            botonNo.style.top = Math.random() * maxY + "px";
+        }
+
+        // El botón No escapa al intentar acercarse.
+        botonNo.addEventListener("mouseenter", escapar);
+        botonNo.addEventListener("touchstart", function(event) {
+            event.preventDefault();
+            escapar();
+        });
+
+        botonNo.addEventListener("click", function(event) {
+            event.preventDefault();
+            escapar();
+        });
+
+        function aceptar() {
+            document.getElementById("respuesta").style.display = "block";
+            zona.style.display = "none";
+        }
+    </script>
+</body>
+</html>
+
